@@ -16,7 +16,7 @@ if __name__ == "__main__":
             for pageurl in urlpcr.SinglePageUrls:
                 print pageurl
                 SingleDoujinshiSpider.DownloadSimplePageDJS(url+pageurl.decode("utf-8"))
-                url =  urlpcr.NextPageUrl
+            url =  urlpcr.NextPageUrl
         else:
             print "open url:" + url+" failed!",httppcr.errorcode,httppcr.errorreason
             break
