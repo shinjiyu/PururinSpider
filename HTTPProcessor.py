@@ -23,7 +23,7 @@ class HTTPProcessor:
             try:
                 trytimes  =  trytimes+1
                 print "try %uth time to open "% trytimes,url
-                response = urllib2.urlopen(request)
+                response = urllib2.urlopen(request,timeout= 3000)
             except HTTPError, e:
                 self.errorcode = e.code
             except URLError, e:
@@ -35,8 +35,11 @@ class HTTPProcessor:
             else:
                 self.errorcode = 200
                 self.content = response.read()
+                response.close()
             if trytimes>=10:
                 break
+
+
 
 
 

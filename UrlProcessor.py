@@ -83,7 +83,9 @@ class SingleDJS_Processor(HTMLParser):
     def handle_data(self, data):
         if data == "Pages":
             self.bNextDataIsPageCount = True
-        elif self.bNextDataIsPageCount == True:
+        elif self.bNextDataIsPageCount == True and self.dwPageCount == 0:
+            print data
+            print data[:data.find(" ")]+"1"
             self.dwPageCount = string.atoi(data[:data.find(" ")])
             self.bNextDataIsPageCount =False
             print "find pagecount %u" % self.dwPageCount

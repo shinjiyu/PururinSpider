@@ -2,6 +2,8 @@
 import UrlProcessor
 import HTTPProcessor
 import ImgSaver
+import sys
+import os
 def DownloadSimplePageDJS(url_DJS):
     urlprocessor = UrlProcessor.SingleDJS_Processor()
     httpprocessor = HTTPProcessor.HTTPProcessor()
@@ -17,6 +19,10 @@ def DownloadSimplePageDJS(url_DJS):
 
     #get pic
     filename = urlprocessor.filename
+    rootpath = sys.argv[0]
+    rootpath = rootpath[:rootpath.rfind('/')]
+    if os.path.isdir(os.path.join(rootpath,filename)):
+        return
     pageprocessor =UrlProcessor.SinglePageDJS_Processor()
     imgsaver = ImgSaver.ImgSaver()
     for pageurl in urlprocessor.PageUrls:
